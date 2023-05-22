@@ -1,7 +1,3 @@
-# Do not edit the class below except for
-# the insert, contains, and remove methods.
-# Feel free to add new properties and methods
-# to the class.
 import math
 
 
@@ -32,8 +28,6 @@ class BST:
                 else:
                     self = self.right
 
-
-
         return self
 
     def contains(self, value):
@@ -41,13 +35,10 @@ class BST:
         print("CONTAINS", value)
         while self is not None:
 
-
             self.printer(self, [])
             if value < self.value:
                 self = self.left
             elif value > self.value:
-
-
 
                 self = self.right
             else:
@@ -56,16 +47,6 @@ class BST:
         print(False)
         return False
 
-    # because this is already the answer to an even harder question
-    # def turn_to_list_object(self, start, lister):
-
-    #     lister.append(start)
-    #     if start.left is not None:
-    #         self.turn_to_list_object(start.left,lister)
-    #     if start.right is not None:
-    #         self.turn_to_list_object(start.right,lister)
-    #     print([i.value for i in lister])
-    #     return lister
     def printer(self, start, lister):
         lister.append(start.value)
         if start.left is not None:
@@ -101,12 +82,10 @@ class BST:
 
                     else:
 
-
                         temp.append(obj.left)
                         temp.append(obj.right)
 
                 if obj.right is not None and obj.left is None:
-
                     store[0].append(obj.value)
                     store[1].append(obj)
                     obj = obj.right
@@ -123,10 +102,8 @@ class BST:
                     store[1].append(obj)
                     obj = obj.left
 
-
         saver = [0]
         for i in range(len(store[0])):
-
 
             if store[1][i] is not store[1][0]:
                 # the problem is right here
@@ -146,9 +123,6 @@ class BST:
                         store[1][i].left = store[1][i].left.left
                     elif store[1][i].left.left is None and store[1][i].left.right is not None:
                         store[1][i].left = store[1][i].left.right
-                    else:
-
-                        replacer = self.find_replacement(store[1][saver[0]], store[0][saver[0]])
 
                 if store[1][i].right is store[1][saver[0]]:
 
@@ -158,31 +132,11 @@ class BST:
                         store[1][i].right = store[1][i].right.left
                     elif store[1][i].right.left is None and store[1][i].right.right is not None:
                         store[1][i].right = store[1][i].right.right
-                    else:
-
-                        replacer = self.find_replacement(store[1][saver[0]], store[0][saver[0]])
-
-        # in here we will set the replacement from the parent node to Null
         return replacement
 
     def remove(self, value):
         print("REMOVE", value)
-        # Write your code here.
-        # Do not edit the return statement of this method.
-        # mem=self.turn_to_list_object(self,[])
-        # if self.right is not None:
-        #     if value is self.right.value:
-        #         if self.right.right is not None:
-        #             self.right=self.right.right
-        #         else:
-        #             self.right=None
-        # if self.left is not None:
-        #     if value is self.left.value:
-        #         if self.left.left is not None:
-        #             self.left=self.left.left
-        #         self.left=None
         if self.right is None and self.left is None:
-
             return
         tracker = []
         while self is not None:
@@ -205,17 +159,14 @@ class BST:
                 else:
                     for i in tracker:
 
-
                         if i.right is not None:
 
                             if i.right is self:
-
                                 i.right = None
                                 return
                         if i.left is not None:
 
                             if i.left is self:
-
                                 i.left = None
                                 return
 
