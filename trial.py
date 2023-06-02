@@ -136,12 +136,9 @@ def caesarCipherEncryptor(string, key):
     for i in range(len(lowercase)):
         decoder[lowercase[i]] = i + 1
         encoder[i + 1] = lowercase[i]
-    # key manager
-    while key >= 26:
-        key -= 26
     # change each value to number by obtaining information from dictionary
     # make it better
-    number_list = [decoder[i] + key if decoder[i] + key <= 26 else (decoder[i] + key) - 26 for i in string]
+    number_list = [decoder[i] + key if decoder[i] + key <= 26 else (decoder[i] + key)%26 for i in string]
     # increment each value
     # using some sort of logic to text wrap
     # reverse each value back to the letter
@@ -149,8 +146,7 @@ def caesarCipherEncryptor(string, key):
 
     return result
 def short(string,key):
-    lowercase=''.join([chr(i) for i in range(ord('a'),ord('z')+1)])
-    print(lowercase)
+    print(''.join([chr(ord(i)-ord('a')+(key+ord('a'))) if ord(i)-ord('a')+key <26 else chr((ord(i)-ord('a')+key )%26+ord('a')) for i in string]))
 short(string, key)
 
 
