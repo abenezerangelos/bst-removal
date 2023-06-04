@@ -161,25 +161,40 @@ def getNthFib(n):
 
 array=[5, 2, [7, -1], 3, [6, [-13, 8], 4]]
 
+def recurse(item):
+    summer=0
+    if isinstance(item,list):
+
+        temp=list(map(recurse, item))
+        print(temp)
+        summer=sum(temp)
+
+    else:
+        summer+=item
+    return summer
+
+
 
 
 def productSum(array,counter=1):
     return sum([(counter+1)*(productSum(i,counter+1)) if isinstance(i,list) else i for i in array])
-def altimplementation(array,counter=2):
-    result_array=[]
-    for i in array:
-        if isinstance(i,list):
-            result_array+=[i*counter for i in [*altimplementation(i,counter+1)]]
-        else:
-            result_array+=[i]
-    print(result_array)
-    return result_array
-def final(array):
-    return sum(altimplementation(array))
-final_result=final(array)
-print(final_result)
+# def altimplementation(array,counter=2):
+#     result_array=[]
+#     for i in array:
+#         if isinstance(i,list):
+#             result_array+=[i*counter for i in [*altimplementation(i,counter+1)]]
+#         else:
+#             result_array+=[i]
+#     print(result_array)
+#     return result_array
+# def final(array):
+#     return sum(altimplementation(array))
+# final_result=final(array)
+# print(final_result)
+temp=recurse(array)
+print(temp)
 
-
+print((lambda f: (lambda x: f(f, x)))(lambda f, n: 1 if n <= 1 else n * f(f, n - 1))(4))
 
 
 
